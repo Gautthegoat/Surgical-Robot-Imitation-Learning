@@ -1,0 +1,62 @@
+checkpoint:
+  save_best: true
+  save_dir: Archive/
+  save_freq: 10
+data:
+  batch_size: 64
+  frame_norm: imagenet
+  frame_size:
+  - 224
+  - 224
+  freq: 10
+  length_actions: 60
+  norm: standard
+  num_workers: 4
+  observations:
+    current_pos: false
+    frame: true
+    past_obs: false
+    time_step: 5
+  pin_memory: true
+  prediction: joint_angles
+  random_BC: 0.5
+  random_HSV: 0.5
+  random_blur: 0.5
+  random_noise: 0.5
+  resize: bicubic
+  shuffle: true
+  train_data_path: /data/gb/needle_pick_handoff_dataset_train/
+  type: relative
+  val_data_path: /data/gb/needle_pick_handoff_dataset_val/
+dataset: DatasetIL
+device: cuda:0
+model:
+  embed_dim: 512
+  image_encoder:
+    freeze_batchnorm: false
+    freeze_encoder: 5
+    pretrained: imagenet
+    type: resnet18
+  style_dim: 32
+  style_encoder:
+    dropout: 0.1
+    feedforward_dim: 3200
+    num_heads: 8
+    num_layers: 4
+  transformer:
+    dropout: 0.1
+    feedforward_dim: 1600
+    num_decoder_layers: 5
+    num_encoder_layers: 4
+    num_heads: 8
+  use_style: true
+model_name: ACTModel
+seed: 42
+tag: Vanilla
+training:
+  epochs: 100
+  kl_weight: 10
+  learning_rate: 8.0e-05
+  loss: mse
+  optimizer: adamw
+  weight_decay: 0.0001

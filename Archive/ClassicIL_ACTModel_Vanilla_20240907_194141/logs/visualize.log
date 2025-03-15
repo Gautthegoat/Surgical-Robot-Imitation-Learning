@@ -1,0 +1,35 @@
+2024-09-07 20:25:50,617 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 20:25:50,621 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 20:25:50,621 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 20:25:50,696 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 20:25:50,767 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-07 20:47:19,094 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 20:47:19,097 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 20:47:19,097 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 20:47:19,174 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 20:47:19,229 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-07 20:53:17,434 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 20:53:17,437 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 20:53:17,438 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 20:53:17,530 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 20:53:17,595 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-07 21:00:04,495 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 21:00:04,498 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 21:00:04,498 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 21:00:04,585 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 21:00:04,652 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-07 21:08:50,117 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 21:08:50,120 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 21:08:50,120 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 21:08:50,206 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 21:08:50,268 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-07 21:12:12,262 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-07 21:12:12,265 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-07 21:12:12,265 - INFO - [engine:__init__] - Engine initialized
+2024-09-07 21:12:12,345 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-07 21:12:12,401 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png
+2024-09-09 14:46:47,511 - INFO - [engine:_setup_logging] - Logger initialized. Logging to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/logs/visualize.log
+2024-09-09 14:46:47,514 - INFO - [engine:_load_config] - Config loaded: /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/config.yaml
+2024-09-09 14:46:47,514 - INFO - [engine:__init__] - Engine initialized
+2024-09-09 14:46:47,599 - INFO - [engine:visualize] - Train_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png
+2024-09-09 14:46:47,653 - INFO - [engine:visualize] - Val_loss plot saved to /home/gb/git/auto-suturing-ml/Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png

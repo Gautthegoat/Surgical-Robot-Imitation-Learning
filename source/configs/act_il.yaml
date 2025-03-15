@@ -1,0 +1,81 @@
+# General settings
+model_name: "ACTModel"
+dataset: "DatasetIL"
+tag: "Vanilla"
+seed: 42                            # Random seed for reproducibility
+device: "cuda:0"                    # Device to use for training ('cuda' or 'cpu')
+
+# Data settings
+data:
+  # Data loading settings
+  train_data_path: "/data/gb/needle_pick_handoff_dataset_train/"     # Path to training data
+  val_data_path: "/data/gb/needle_pick_handoff_dataset_val/"         # Path to validation data
+  batch_size: 64                    # Batch size for training
+  shuffle: True                     # Whether to shuffle the data
+  num_workers: 4                    # Number of workers for data loading
+  pin_memory: True                  # Whether to pin memory for faster data loading
+  
+  # Data preprocessing settings
+  freq: 10                          # Frequency of data collection TODO
+  frame_size: [224, 224]            # Image size
+  prediction: "joint_angles"        # Type of prediction ('joint_angles', 'end_effector')
+  type: "relative"                  # Type of data ('absolute', 'relative', 'delta')
+  norm: "standard"                  # Type of normalization ('standard', 'minmax')
+  length_actions: 60                # Length of predicted action sequence
+  observations:
+    frame: True                     # Include frame data
+    current_pos: False              # Include current position data
+    past_obs: False                 # Include past observation data TODO
+    time_step: 5                    # Time step for past observation data TODO
+  
+  # Data augmentation settings
+  resize: "bicubic"                 # Resize method ('bicubic', 'bilinear', 'nearest')
+  random_BC: 0.5                   # Probability of random brightness and contrast adjustment
+  random_HSV: 0.5               # Probability of random hue and saturation adjustment
+  random_blur: 0.5                # Probability of Gaussian blur
+  random_noise: 0.5               # Probability of Gaussian noise
+  frame_norm: "imagenet"            # Frame normalization method ('ImageNet', 'ZeroOne')
+
+# Model settings
+model:
+  # Model architecture settings
+  embed_dim: 512                    # Embedding dimension size
+  style_dim: 32                     # Style dimension size
+  use_style: True                # Whether to use style variable
+
+  # Encoder settings
+  image_encoder:
+    type: "resnet18"                # Encoder type ('resnet18', 'resnet50', 'vit_base_patch16_224')
+    pretrained: imagenet            # Whether to use pretrained weights
+    freeze_batchnorm: False         # Whether to freeze batch normalization layers TODO
+    freeze_encoder: 5               # Number of epochs before unfreezing encoder TODO
+
+  # Style encoder settings
+  style_encoder:
+    num_layers: 4                   # Number of transformer layers
+    num_heads: 8                    # Number of attention heads
+    feedforward_dim: 3200           # Feedforward dimension size
+    dropout: 0.1                    # Dropout rate
+
+  # Transformer settings
+  transformer:
+    num_encoder_layers: 4           # Number of transformer layers
+    num_decoder_layers: 5           # Number of transformer layers
+    num_heads: 8                    # Number of attention heads
+    feedforward_dim: 1600           # Feedforward dimension size
+    dropout: 0.1                    # Dropout rate
+
+# Training settings
+training:
+  epochs: 100                       # Number of epochs to train
+  learning_rate: 0.00008            # Learning rate
+  weight_decay: 0.0001              # Weight decay (L2 regularization)
+  optimizer: "adamw"                # Optimizer
+  loss: "mse"                       # Loss function ('MSE', 'L1')
+  kl_weight: 10                     # Weight for KL divergence loss
+
+# Checkpointing and logging
+checkpoint:
+  save_dir: "Archive/"
+  save_freq: 10                     # Save checkpoint every N epochs
+  save_best: True                   # Save best checkpoint based on validation loss

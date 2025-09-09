@@ -1,175 +1,58 @@
-# Project Overview
+# Surgical Robot Imitation Learning
 
-Welcome to the Autonomous Mira repository, designed to offer a flexible and modular framework for training Mira surgical robot. This codebase allows users to experiment with various models, encoders, and policies. It’s built for seamless adaptation to new tasks and model architectures, promoting code reuse and easy extension.
+Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. This repo contains a simple training engine (ClassicIL), a dataset pipeline, and an ACT-style policy for predicting future joint trajectories from video frames.
 
-## Key Features
-- **Modular Design**: Reuse components across different tasks and experiments.
-- **Flexible Training**: Easily switch between different encoders, normalization techniques, and prediction formats (joint values, end-effector positions, etc.).
-- **Experiment Logging & Checkpointing**: Automatically log experiments, save checkpoints, and resume from previous states.
-- **ONNX Export**: Export trained models to ONNX for deployment or inference in other environments.
+## Demo
 
----
+<video controls src="Archive/videos/needle_handoff_demo.mp4" width="720"></video>
 
-## Codebase Overview
+[Watch the hand-off demo (MP4)](Archive/videos/needle_handoff_demo.mp4)
 
-The codebase is structured to support multiple engines, tasks, and training types, allowing for easy experimentation and scaling. The core design focuses on reusability, where engines coordinate between models, datasets, and training configurations. Below is a breakdown of the key modules.
+## Highlights
 
-### Engine Structure
-The main engines handle all aspects of training, evaluation, and model export. They also manage interactions between models, datasets, and utilities such as logging and checkpointing.
+- Classic imitation learning engine with train/resume/visualize/export modes.
+- ACT-style model predicting short action sequences from images (+ optional style embedding).
+- Dataset tools to extract frames from video and align robot logs.
+- Automatic plots for loss curves and action distributions, archived per run.
 
-#### Abstract Methods:
-These are core functions expected to be implemented by any engine:
-- **`Train`**: Runs the training loop for a specified task and model.
-- **`Resume Training`**: Restores a training session from the latest checkpoint.
-- **`Visualize Results`**: Provides visual feedback of the model's performance.
-- **`Export to ONNX`**: Converts and saves the trained model in ONNX format for deployment.
+## Quickstart
 
-#### Implemented Methods:
-- **`_Setup Logging`**: Initializes a logging system to track any abstract methods of an engine.
-- **`_Log_metrics`**: Take the input and save it to a metric.yaml file
-- **`_Load Config File`**: Reads and parses configuration settings from a YAML file.
-- **`_Save Checkpoint`**: Saves the current model state during training.
-- **`_Load Checkpoint`**: Loads a previously saved model state.
+1) Environment (Python 3.10+ recommended):
 
-#### Initialization Process:
-When an engine is initialized, it first sets up logging and loads the appropriate configuration file. From there, the engine is ready to either start or resume training, visualize results, or export a model.
-
----
-
-## Directory Structure
-
-### `Data/`
-This folder contains task-specific data for training and evaluation.
-- **Task1/**: Contains data for Task 1.
-- **Task2/**: Contains data for Task 2.
-
-### `Source/`
-The core source code for running experiments, defining models, and managing datasets.
-- **`configs/`**: Contains YAML configuration files for different experiments (e.g., `act_il.yaml`).
-- **`data/`**:
-  - **components/**: Data transformations and utilities.
-  - **data_explorer.py**: Script for inspecting and exploring datasets.
-  - **dataset.py**: Defines dataset loading and processing for imitation learning (IL).
-- **`engines/`**:
-  - **classic_IL.py**: Contains the core logic for imitation learning-based engines.
-  - **parent_engine.py**: Base class for all engines, containing shared functionality.
-- **`models/`**:
-  - **components/**: Modules defining different neural network components (e.g., Vision Transformers, ResNets).
-  - **act.py**: Model architecture for Action Transformers.
-- **`utils/`**: General utilities (e.g., `setup_logger.py`, `get_engine.py`).
-
-### `Archive/`
-Each experiment is archived here with its own folder. The archive includes:
-- **`config.yaml`**: The YAML configuration file used in the experiment.
-- **`metrics.yaml`**: The YAML logging of metrics from training and evaluation, used for visualization
-- **`checkpoints/`**: Saved model checkpoints.
-- **`logs/`**:
-  - **`train.log`**: Logs for the training process.
-  - **`evaluate.log`**: Logs for the evaluation process.
-  - **`visualize.log`**: Logs for the visualize process.
-  - **`export.log`**: Logs for the model export process.
-- **`plots/`**: Visualizations generated (from dataset, training, evaluation...)
-
-### Other Files:
-- **`Main.py`**: Entry point to launch experiments, train models, and perform evaluations.
-- **`README.md`**: This document.
-- **`requirements.txt`**: List of dependencies required to run the code.
-- **`.gitignore`**: Specifies files and directories to be ignored by Git.
-- **`tests.py`**: Just a file to try some questionnable code
-
----
-
-## Getting Started
-
-### 1. **Install Dependencies**
-
-Install the required Python libraries:
-
-```bash
-pip install -r requirements.txt
+```
+pip install torch torchvision
+pip install numpy pandas pyyaml matplotlib albumentations opencv-python av colorama
 ```
 
-### 2. **Run a Training Experiment**
+2) Configure data paths in `source/configs/act_il.yaml` (`train_data_path`, `val_data_path`).
 
-To train a model, use the `train` mode with the specified engine and configuration file:
+3) Train / Visualize / Export:
 
-```bash
-python Main.py train --engine <engine_name> --config <config_file>
+```
+python main.py train --engine ClassicIL --config act_il
+python main.py visualize --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
+python main.py export --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
 ```
 
-### 3. **Resume Training**
+## Data (expected)
 
-To resume training from a saved checkpoint:
+- Each dataset root contains one or more `...demos/` folders with `demo_*` subfolders.
+- Each `demo_*` has an `index.csv` referencing saved frames (`frame_*.npy`) and associated robot logs.
+- Frames are stored as RGB numpy arrays; logs include joint angles used as training targets.
+- Basic transforms/normalization and optional augmentations are configured in `act_il.yaml`.
 
-```bash
-python Main.py resume --archive_model <archive_model_name>
-```
+## Results (example)
 
-### 4. **Visualize Results**
+<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png" width="420">
 
-To visualize the results of a trained model:
+<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="420">
 
-```bash
-python Main.py visualize --archive_model <archive_model_name>
-```
+## Repo Tips
 
-### 5. **Export the Model**
-
-To export a trained model to ONNX format:
-
-```bash
-python Main.py export --archive_model <archive_model_name>
-```
-
-### 6. **Experiment Logging**
-
-Logs, checkpoints, and configurations are automatically saved in the `Archive/<engine_name>_<model_name>_<tag>` folder.
+- All training artifacts are stored under `Archive/<ENGINE>_<MODEL>_<TAG>_<TIMESTAMP>/` (config, logs, plots, checkpoints).
+- Engine entrypoint: `main.py` with modes `train|resume|visualize|export`.
+- Key files: `source/engines/`, `source/models/`, `source/datasets/`, `source/configs/act_il.yaml`.
 
 ---
 
-## Contribution Guidelines
-
-Feel free to submit issues or contribute to the project. Make sure to ask the supreme leader GUCCI before making any changes.
-
----
-
-## License
-
-This project is licensed under the French_Bullshit License - see the `LICENSE` file for details.
-
----
-
-## Gucci’s thoughts before he leaves.
-
-When it comes to automated robotics, there's always been a tension between two approaches: behavior cloning and reinforcement learning (RL). From my perspective, RL excels at providing models with tactical decision-making capabilities, allowing them to plan for long-term strategies. However, RL tends to be inefficient when it comes to the precise, fine-grained manipulation required in tasks like surgery. This is where behavior cloning shines—it can efficiently learn detailed, task-specific control.
-
-Our mission isn’t about solving surgery holistically, nor is it about figuring out the best way to perform a procedure from start to finish. Instead, we’re focused on mastering fine manipulation, making it fast, reliable, and adaptable. Only after we’ve achieved that level of manipulation skill should we think about high-level planning and strategy. For this reason, I believe behavior cloning offers the quickest path to success. However, the key challenge we face now is generalizing well from a limited amount of training data.
-
-Parallels with Self-driving Cars
-Our mission is conceptually similar to self-driving cars. In that domain, high-level planning is relatively straightforward; you have a map (the equivalent of a surgeon's guidance for us) telling you where to go. The real challenge is in executing those instructions with precision. Tesla, for example, trains models with vast amounts of sensor data from cars equipped with multiple sensors. They then use distillation to refine the model, reducing the complexity to something that works with only RGB images. This is critical, as the idea is that if humans can drive with just vision, an AI model should be able to as well.
-
-Similarly, in surgical robotics, the RGB image contains all the critical information, since a surgeon can control the robot with just vision. Yet, training a model solely from RGB images is complex and often inefficient with current learning methods. This is where distillation becomes crucial. By first training a model with a "perfect" 3D representation of the environment, we can then distill that knowledge into a model that can operate effectively using just visual inputs.
-
-Learning Strategy: Behavior Cloning and Model-based RL
-While I advocate for behavior cloning as the best approach to achieve fast, precise control, I also see value in combining it with reinforcement learning. Specifically, model-based RL can be extremely useful for fine-tuning and optimizing models, enabling continuous learning. In the long term, integrating techniques like Inverse Reinforcement Learning (IRL) could allow us to learn more efficiently from expert demonstrations, further enhancing the precision of our models. I also want to point out that the main challenge of behavior cloning is getting some non generalized model which is bad as soon as it is Out Of Distribution, and what will always be the best solution is more data ! But there exist interesting methods that limit this problem too, e.g, https://arxiv.org/pdf/2405.19307, and I also think that reinforcement learning methods can help on this issue.
-
-Simulation vs Real-Life Training
-This is going to be short. Two advantages of simulators over real-life, they can be fast at iterating over, they are controlled environment, two disadvantages, not the correct dynamics, a lot of work to do. And I say that distillation can make up for this controlled environment advantage. Thus 1 advantage against 2 disadvantages :)
-(Also fast and not correct dynamics are both getting nullified if money gets involved so it’s really all about if distillation can make up for controlled env.)
-
-Encoding: Leveraging Pretrained Foundation Models
-Training models from scratch with limited data often leads to poor results, primarily due to inefficiencies in learning techniques. This applies to encoding visual observations into latent space as well. To overcome this, we should leverage pretrained foundation models. By using self-supervised learning on large-scale surgical data, we can adapt these models to our specific task. While foundation models like vision transformers have shown success in various domains, we must tailor them to surgical data, which has unique visual patterns compared to more traditional datasets.
-
-Policy: Mastering Execution over Planning
-The challenge in policy learning is not so much in planning. For surgical tasks, the plan is often straightforward: pick up a needle, rotate it, or make precise movements. The complexity lies in the execution—how well the model can adapt to the specific environment to carry out these plans with precision. Thus, the focus of our work should remain on improving execution, not strategy. On the same lines as encoding, foundation models are great, you want to use as much experience as you can, that’s why I believe a single model has to be trained on multiple tasks, if ever some degradation of performance happens because of this diversity and scaling up the model is not anymore an option, then fine-tuning this model for specific tasks could make up for it.
-
-And at the end, it is just about finding a process that scales well and asking for more money to scale it.
-
-Gauthier,
-good luck
-
-What I think the model could look like:
-
-We can't put images with BitBucket, they really ruined my dramatic moment, just look at the the file called gucci_model.jpg...
-
-It’s basically a Diffusion Policy except that it uses a task embedding making it capable of learning different tasks and also uses a LSTM which aims at getting a very compressed understanding of what step in the task the robot is. I think that diffusion is really the correct way of doing trajectory prediction, great at multimodality and scales well (e.g.image generation models). Then we also want to make use of the great transformer for understanding the environment, or at least expressing what is worth looking at for each task (attention is great), and it scales well (e.g.every_single_paper_for_the_last_five_years).
+Note: Update the demo video path if your file name under `Archive/videos/` differs from `needle_handoff_demo.mp4`.

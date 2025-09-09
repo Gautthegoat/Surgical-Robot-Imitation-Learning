@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://www.virtualincision.com/">
-    <img src="Archive/documentation/Virtual-Incision-Logo.png" alt="Virtual Incision" height="56">
+    <img src="Archive/documentation/Virtual-Incision-Logo.png" alt="Virtual Incision" height="156">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.virtualincision.com/">
+    <img src="Archive/documentation/Mira.jpeg" alt="MIRA" height="156">
   </a>
 </p>
 
@@ -32,8 +36,8 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 Photos of the robot environment and the teleoperation device used during development. Replace the placeholder image paths with your own files.
 
 <p align="center">
-  <img src="assets/photos/robot_setup.jpeg" alt="Surgical robot setup" width="420">
-  <img src="assets/photos/teleop.jpeg" alt="Teleoperation device" width="420">
+  <img src="Archive/documentation/robot_setup.jpeg" alt="Surgical robot setup" width="420">
+  <img src="Archive/documentation/teleop.jpeg" alt="Teleoperation device" width="420">
 </p>
 
 ## Quickstart

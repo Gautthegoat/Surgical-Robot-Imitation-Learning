@@ -6,7 +6,7 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 
 <video controls src="Archive/documentation/Needle_pick_handoff.MP4" width="720"></video>
 
-[Watch the hand-off demo (MP4)](Archive/videos/needle_handoff_demo.mp4)
+[Watch the hand-off demo (MP4)](Archive/documentation/Needle_pick_handoff.MP4)
 
 - Classic imitation learning engine with train/resume/visualize/export modes.
 - ACT-style model predicting short action sequences from images.
@@ -31,7 +31,7 @@ python main.py visualize --archive_model ClassicIL_ACTModel_Vanilla_20240907_194
 python main.py export --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
 ```
 
-## Data (expected)
+## Data
 
 - Each dataset root contains one or more `...demos/` folders with `demo_*` subfolders.
 - Each `demo_*` has an `index.csv` referencing saved frames (`frame_*.npy`) and associated robot logs.

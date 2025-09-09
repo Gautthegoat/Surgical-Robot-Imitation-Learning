@@ -1,6 +1,15 @@
 # Surgical Robot Imitation Learning
 
-Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. This repo contains a simple training engine (ClassicIL), a dataset pipeline, and an ACT-style policy for predicting future joint trajectories from video frames.
+Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. This repo contains a simple training engine (ClassicIL), a dataset pipeline, and an ACT-style policy for predicting future joint trajectories from video frames. The policy was deployed for real-time inference on an NVIDIA Holoscan pipeline during my internship at Virtual Incision.
+
+## Internship Context & Highlights
+
+- Organization: Virtual Incision — surgical robotics R&D.
+- Device: Dual-arm surgical robot performing needle pick-and-hand-off.
+- Deployment: Real-time, on-device inference on NVIDIA Holoscan.
+- Model: ACT-style policy predicting short joint trajectories from RGB frames.
+- Data: Synchronized video frames and robot joint logs via this repo’s dataset tools.
+- Demo: Closed-loop control achieving reliable pick-and-hand-off (see video below).
 
 ## Demo
 

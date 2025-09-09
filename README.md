@@ -1,10 +1,16 @@
+<p align="center">
+  <a href="https://www.virtualincision.com/">
+    <img src="Archive/documentation/Virtual-Incision-Logo.png" alt="Virtual Incision" height="56">
+  </a>
+</p>
+
 # Surgical Robot Imitation Learning
 
 Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. This repo contains a simple training engine (ClassicIL), a dataset pipeline, and an ACT-style policy for predicting future joint trajectories from video frames. The policy was deployed for real-time inference on an NVIDIA Holoscan pipeline during my internship at Virtual Incision.
 
 ## Internship Context & Highlights
 
-- Organization: Virtual Incision — surgical robotics R&D.
+- Organization: [Virtual Incision](https://www.virtualincision.com/) — surgical robotics R&D.
 - Device: Dual-arm surgical robot performing needle pick-and-hand-off.
 - Deployment: Real-time, on-device inference on NVIDIA Holoscan.
 - Model: ACT-style policy predicting short joint trajectories from RGB frames.
@@ -20,6 +26,15 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 - Classic imitation learning engine with train/resume/visualize/export modes.
 - ACT-style model predicting short action sequences from images.
 - Dataset tools to extract frames from video and align robot logs.
+
+## Setup Photos
+
+Photos of the robot environment and the teleoperation device used during development. Replace the placeholder image paths with your own files.
+
+<p align="center">
+  <img src="assets/photos/robot_setup.jpeg" alt="Surgical robot setup" width="420">
+  <img src="assets/photos/teleop.jpeg" alt="Teleoperation device" width="420">
+</p>
 
 ## Quickstart
 

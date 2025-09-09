@@ -52,7 +52,7 @@ Photos of the robot environment and the teleoperation device used during develop
 - Frames are stored as RGB numpy arrays; logs include joint angles used as training targets.
 - Basic transforms/normalization and optional augmentations are configured in `act_il.yaml`.
 
-## Results (example)
+## Training Logs (example)
 
 <table>
   <tr>

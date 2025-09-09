@@ -23,7 +23,8 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 
 ## Demo
 
-[![Watch the hand-off demo](Archive/documentation/Needle_pick_handoff.gif)](Archive/documentation/Needle_pick_handoff.MP4)
+[![Watch the video](https://img.youtube.com/vi/wZuMUCP2N-o/maxresdefault.jpg)](https://youtu.be/wZuMUCP2N-o)
+
 
 - Classic imitation learning engine with train/resume/visualize/export modes.
 - ACT-style model predicting short action sequences from images.

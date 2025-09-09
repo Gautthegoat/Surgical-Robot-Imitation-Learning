@@ -4,20 +4,17 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 
 ## Demo
 
-<video controls src="Archive/videos/needle_handoff_demo.mp4" width="720"></video>
+<video controls src="Archive/documentation/Needle_pick_handoff.mp4" width="720"></video>
 
 [Watch the hand-off demo (MP4)](Archive/videos/needle_handoff_demo.mp4)
 
-## Highlights
-
 - Classic imitation learning engine with train/resume/visualize/export modes.
-- ACT-style model predicting short action sequences from images (+ optional style embedding).
+- ACT-style model predicting short action sequences from images.
 - Dataset tools to extract frames from video and align robot logs.
-- Automatic plots for loss curves and action distributions, archived per run.
 
 ## Quickstart
 
-1) Environment (Python 3.10+ recommended):
+1) Environment (Python 3.10+):
 
 ```
 pip install torch torchvision
@@ -47,12 +44,7 @@ python main.py export --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
 
 <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="420">
 
-## Repo Tips
+---
 
 - All training artifacts are stored under `Archive/<ENGINE>_<MODEL>_<TAG>_<TIMESTAMP>/` (config, logs, plots, checkpoints).
 - Engine entrypoint: `main.py` with modes `train|resume|visualize|export`.
-- Key files: `source/engines/`, `source/models/`, `source/datasets/`, `source/configs/act_il.yaml`.
-
----
-
-Note: Update the demo video path if your file name under `Archive/videos/` differs from `needle_handoff_demo.mp4`.

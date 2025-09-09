@@ -4,7 +4,7 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 
 ## Demo
 
-<video controls src="Archive/documentation/Needle_pick_handoff.mp4" width="720"></video>
+<video controls src="Archive/documentation/Needle_pick_handoff.MP4" width="720"></video>
 
 [Watch the hand-off demo (MP4)](Archive/videos/needle_handoff_demo.mp4)
 

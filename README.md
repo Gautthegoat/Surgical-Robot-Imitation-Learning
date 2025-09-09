@@ -21,7 +21,7 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 - Data: Synchronized video frames and robot joint logs via this repo’s dataset tools.
 - Demo: Closed-loop control achieving reliable pick-and-hand-off (see video below).
 
-## Demo
+## Video Demo of Automated Pick and Handoff Task
 
 [![Watch the video](https://img.youtube.com/vi/wZuMUCP2N-o/maxresdefault.jpg)](https://youtu.be/wZuMUCP2N-o)
 

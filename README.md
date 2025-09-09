@@ -46,6 +46,24 @@ Photos of the robot environment and the teleoperation device used during develop
   </tr>
 </table>
 
+## Data
+
+- Each dataset root contains one or more `...demos/` folders with `demo_*` subfolders.
+- Each `demo_*` has an `index.csv` referencing saved frames (`frame_*.npy`) and associated robot logs.
+- Frames are stored as RGB numpy arrays; logs include joint angles used as training targets.
+- Basic transforms/normalization and optional augmentations are configured in `act_il.yaml`.
+
+## Results (example)
+
+<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png" width="420">
+
+<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="420">
+
+---
+
+- All training artifacts are stored under `Archive/<ENGINE>_<MODEL>_<TAG>_<TIMESTAMP>/` (config, logs, plots, checkpoints).
+- Engine entrypoint: `main.py` with modes `train|resume|visualize|export`.
+
 ## Quickstart
 
 1) Environment (Python 3.10+):
@@ -64,21 +82,3 @@ python main.py train --engine ClassicIL --config act_il
 python main.py visualize --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
 python main.py export --archive_model ClassicIL_ACTModel_Vanilla_20240907_194141
 ```
-
-## Data
-
-- Each dataset root contains one or more `...demos/` folders with `demo_*` subfolders.
-- Each `demo_*` has an `index.csv` referencing saved frames (`frame_*.npy`) and associated robot logs.
-- Frames are stored as RGB numpy arrays; logs include joint angles used as training targets.
-- Basic transforms/normalization and optional augmentations are configured in `act_il.yaml`.
-
-## Results (example)
-
-<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png" width="420">
-
-<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="420">
-
----
-
-- All training artifacts are stored under `Archive/<ENGINE>_<MODEL>_<TAG>_<TIMESTAMP>/` (config, logs, plots, checkpoints).
-- Engine entrypoint: `main.py` with modes `train|resume|visualize|export`.

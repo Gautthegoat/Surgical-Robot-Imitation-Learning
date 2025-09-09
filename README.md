@@ -54,9 +54,28 @@ Photos of the robot environment and the teleoperation device used during develop
 
 ## Results (example)
 
-<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png" width="420">
-
-<img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="420"> <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="420">
+<table>
+  <tr>
+    <td align="center">
+      <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_loss.png" width="360"><br>
+      <sub>Train loss</sub>
+    </td>
+    <td align="center">
+      <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_loss.png" width="360"><br>
+      <sub>Val loss</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/train_distr/joint_1.png" width="360"><br>
+      <sub>Train joint_1</sub>
+    </td>
+    <td align="center">
+      <img src="Archive/ClassicIL_ACTModel_Vanilla_20240907_194141/plots/val_distr/joint_1.png" width="360"><br>
+      <sub>Val joint_1</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 

@@ -33,12 +33,18 @@ Needle pick-and-hand-off on a dual-arm surgical robot using imitation learning. 
 
 ## Setup Photos
 
-Photos of the robot environment and the teleoperation device used during development. Replace the placeholder image paths with your own files.
+Photos of the robot environment and the teleoperation device used during development.
 
-<p align="center">
-  <img src="Archive/documentation/robot_setup.jpeg" alt="Surgical robot setup" width="420">
-  <img src="Archive/documentation/teleop.jpeg" alt="Teleoperation device" width="420">
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="Archive/documentation/robot_setup.jpeg" alt="Surgical robot setup" width="360">
+    </td>
+    <td align="center">
+      <img src="Archive/documentation/teleop.jpeg" alt="Teleoperation device" width="360">
+    </td>
+  </tr>
+</table>
 
 ## Quickstart
 
